@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Security Configuration -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'self';">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <title>Help Me and Take My Hand Association | جمعية ساعدني وخذ بيدي الخيرية</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <span class="logo-ar lang-ar">جمعية ساعدني وخذ بيدي الخيرية</span>
+                <span class="logo-en lang-en">Help Me and Take My Hand Association</span>
+            </a>
+
+            <button class="mobile-toggle" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <ul class="nav-links">
+                <li><a href="#about"><span class="lang-en">About</span><span class="lang-ar">من نحن</span></a></li>
+                <li><a href="#services"><span class="lang-en">Services</span><span class="lang-ar">خدماتنا</span></a>
+                </li>
+                <li><a href="#projects"><span class="lang-en">Projects</span><span class="lang-ar">المشاريع</span></a>
+                </li>
+                <li><a href="#impact"><span class="lang-en">Impact</span><span class="lang-ar">الأثر</span></a></li>
+                <li><a href="#donate" class="btn-donate-sm"><span class="lang-en">Donate Now</span><span
+                            class="lang-ar">تبرع الآن</span></a></li>
+                <li>
+                    <button id="lang-toggle" class="lang-toggle" aria-label="Change Language">عربي</button>
+                </li>
+                <li>
+                    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark/Light Mode">
+                        <i class="fas fa-sun"></i>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="hero fade-in">
+            <div class="hero-bg"></div>
+            <div class="container hero-content">
+                <div class="hero-logo-wrapper">
+                    <img src="logo.png" alt="Help Me and Take My Hand Association Logo" class="hero-logo">
+                </div>
+
+                <h1 class="hero-title">
+                    <span class="lang-ar">جمعية ساعدني وخذ بيدي الخيرية</span>
+                    <span class="lang-en bg-clip-text">Help Me and Take My Hand Association</span>
+                </h1>
+
+                <p class="hero-intro">
+                    <span class="lang-en">Empowering persons with disabilities through inclusive education,
+                        rehabilitation, and sustainable community development.</span>
+                    <span class="lang-ar">نعمل على تمكين الأشخاص ذوي الإعاقة من خلال برامج تعليمية وتأهيلية وتنموية
+                        لتحقيق دمج حقيقي في المجتمع.</span>
+                </p>
+
+                <div class="hero-actions">
+                    <a href="#donate" class="btn btn-primary"><span class="lang-en">Donate Now</span><span
+                            class="lang-ar">تبرع الآن</span></a>
+                    <a href="#projects" class="btn btn-outline"><span class="lang-en">View Projects</span><span
+                            class="lang-ar">تصفح المشاريع</span></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about section-padding fade-in">
+            <div class="container about-grid">
+                <div class="about-text">
+                    <h2 class="section-title">
+                        <span class="lang-en">Who We Are</span>
+                        <span class="lang-ar">من نحن</span>
+                    </h2>
+                    <p class="lead">
+                        <span class="lang-en">Help Me and Take My Hand Association is a Palestinian non-profit
+                            organization established in 2020 in Umm Salamuna village, Bethlehem. It works to empower
+                            persons with disabilities through inclusive programs that promote dignity, accessibility,
+                            and equal opportunities.</span>
+                        <span class="lang-ar">تأسست جمعية ساعدني وخذ بيدي الخيرية عام 2020 في قرية أم سلمونة – بيت لحم،
+                            وتهدف إلى تمكين الأشخاص ذوي الإعاقة من خلال برامج تنموية وتأهيلية شاملة تعزز الكرامة
+                            والمساواة.</span>
+                    </p>
+
+                    <div class="mission-vision mt-4">
+                        <div class="mv-card">
+                            <i class="fas fa-eye fa-2x"></i>
+                            <h3>
+                                <span class="lang-en">Vision</span>
+                                <span class="lang-ar">الرؤية</span>
+                            </h3>
+                            <p>
+                                <span class="lang-en">To achieve inclusive development and comprehensive care for
+                                    persons with disabilities.</span>
+                                <span class="lang-ar">تحقيق تنمية شاملة ورعاية متكاملة للأشخاص ذوي الإعاقة.</span>
+                            </p>
+                        </div>
+                        <div class="mv-card">
+                            <i class="fas fa-bullseye fa-2x"></i>
+                            <h3>
+                                <span class="lang-en">Mission</span>
+                                <span class="lang-ar">الرسالة</span>
+                            </h3>
+                            <p>
+                                <span class="lang-en">To empower individuals through programs based on human rights,
+                                    equality, and social justice.</span>
+                                <span class="lang-ar">تمكين الأفراد من خلال برامج قائمة على حقوق الإنسان والمساواة
+                                    والعدالة الاجتماعية.</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image-wrapper">
+                    <div class="image-placeholder">
+                        <i class="fas fa-hands-holding-child"></i>
+                        <span>
+                            <span class="lang-en">Empowering Lives</span>
+                            <span class="lang-ar">نمكّن الأرواح</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="services section-padding bg-secondary fade-in">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2 class="section-title">
+                        <span class="lang-en">Our Services</span>
+                        <span class="lang-ar">خدماتنا</span>
+                    </h2>
+                </div>
+
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-wheelchair"></i></div>
+                        <h3>
+                            <span class="lang-en">Rehabilitation Programs</span>
+                            <span class="lang-ar">برامج تأهيلية</span>
+                        </h3>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-city"></i></div>
+                        <h3>
+                            <span class="lang-en">Community Development</span>
+                            <span class="lang-ar">تنمية مجتمعية</span>
+                        </h3>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-heart-pulse"></i></div>
+                        <h3>
+                            <span class="lang-en">Psychological Support</span>
+                            <span class="lang-ar">دعم نفسي واجتماعي</span>
+                        </h3>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-hand-holding-dollar"></i></div>
+                        <h3>
+                            <span class="lang-en">Economic Empowerment</span>
+                            <span class="lang-ar">تمكين اقتصادي</span>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects section-padding fade-in">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2 class="section-title">
+                        <span class="lang-en">Our Projects</span>
+                        <span class="lang-ar">مشاريعنا</span>
+                    </h2>
+                </div>
+
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-img-placeholder">
+                            <img src="images/project-2.jpg" alt="Sensory Room" class="project-img"
+                                onerror="this.style.display='none'">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3>
+                                <span class="lang-en">Sensory Room</span>
+                                <span class="lang-ar">الغرفة الحسية</span>
+                            </h3>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-img-placeholder">
+                            <img src="images/project-3.jpg" alt="Physical Therapy" class="project-img"
+                                onerror="this.style.display='none'">
+                            <i class="fas fa-user-doctor"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3>
+                                <span class="lang-en">Physical Therapy</span>
+                                <span class="lang-ar">العلاج الطبيعي</span>
+                            </h3>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-img-placeholder">
+                            <img src="images/project-4.jpg" alt="Speech Therapy" class="project-img"
+                                onerror="this.style.display='none'">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3>
+                                <span class="lang-en">Speech Therapy</span>
+                                <span class="lang-ar">العلاج النطقي</span>
+                            </h3>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-img-placeholder">
+                            <img src="images/project-8.jpg" alt="Psychological Relief for Mothers - Canada"
+                                class="project-img" onerror="this.style.display='none'">
+                            <i class="fas fa-hands-holding-heart"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3>
+                                <span class="lang-en">Psychological Relief for Mothers - Canada</span>
+                                <span class="lang-ar">تفريغ نفسي لأمهات ذوي الاحتياجات الخاصة (كندا)</span>
+                            </h3>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-img-placeholder">
+                            <img src="images/project-9.jpg" alt="Special Needs Park in the Western Rural Area"
+                                class="project-img" onerror="this.style.display='none'">
+                            <i class="fas fa-tree"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3>
+                                <span class="lang-en">Special Needs Park in the Western Rural Area</span>
+                                <span class="lang-ar">منتزه لذوي الاحتياجات الخاصة في الريف الغربي</span>
+                            </h3>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-img-placeholder">
+                            <img src="images/project-10.jpg" alt="MRG Advocacy for Special Needs" class="project-img" onerror="this.style.display='none'">
+                            <i class="fas fa-bullhorn"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3>
+                                <span class="lang-en">MRG Advocacy for Special Needs</span>
+                                <span class="lang-ar">مناصرة ذوي الاحتياجات الخاصة من MRG</span>
+                            </h3>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-img-placeholder">
+                            <img src="images/project-11.jpg" alt="Restoration Project by the Polish Government" class="project-img" onerror="this.style.display='none'">
+                            <i class="fas fa-hammer"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3>
+                                <span class="lang-en">Restoration by the Polish Government</span>
+                                <span class="lang-ar">ترميم من الحكومة البولندية</span>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Impact Section -->
+        <section id="impact" class="impact section-padding bg-primary text-white fade-in">
+            <div class="container">
+                <div class="impact-grid">
+                    <div class="impact-stat">
+                        <i class="fas fa-users fa-3x mb-3"></i>
+                        <h3 class="stat-number" data-target="200">0</h3>
+                        <span>
+                            <span class="lang-en">+ Beneficiaries</span>
+                            <span class="lang-ar">+ مستفيد</span>
+                        </span>
+                    </div>
+                    <div class="impact-stat">
+                        <i class="fas fa-diagram-project fa-3x mb-3"></i>
+                        <h3 class="stat-number" data-target="7">0</h3>
+                        <span>
+                            <span class="lang-en">Major Projects</span>
+                            <span class="lang-ar">مشاريع منفذة</span>
+                        </span>
+                    </div>
+                    <div class="impact-stat">
+                        <i class="fas fa-globe fa-3x mb-3"></i>
+                        <h3 class="stat-number">3+</h3>
+                        <span>
+                            <span class="lang-en">International Funding Partners</span>
+                            <span class="lang-ar">جهات تمويل دولية</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Donation Section -->
+        <section id="donate" class="donate section-padding fade-in">
+            <div class="container">
+                <div class="donate-wrapper">
+                    <div class="donate-info">
+                        <h2 class="section-title">
+                            <span class="lang-en">Support Our Cause</span>
+                            <span class="lang-ar">ادعم قضيتنا</span>
+                        </h2>
+                        <p class="donate-lead">
+                            <span class="lang-en">Your contribution directly impacts the lives of persons with
+                                disabilities.</span>
+                            <span class="lang-ar">مساهمتك تؤثر بشكل مباشر في حياة الأشخاص ذوي الإعاقة.</span>
+                        </p>
+                        <div class="qr-placeholder mt-4">
+                            <i class="fas fa-qrcode fa-4x"></i>
+                            <p>
+                                <span class="lang-en">Scan to Donate</span>
+                                <span class="lang-ar">امسح الكود للتبرع</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="donate-card">
+                        <div class="donate-card-header">
+                            <h3>
+                                <span class="lang-en">Bank Transfer</span>
+                                <span class="lang-ar">التحويل البنكي</span>
+                            </h3>
+                            <i class="fas fa-building-columns"></i>
+                        </div>
+                        <div class="donate-card-body">
+                            <div class="detail-group">
+                                <label>
+                                    <span class="lang-en">Account Name</span>
+                                    <span class="lang-ar">اسم الحساب</span>
+                                </label>
+                                <div class="value highlight">MESSER'S. HELP ME AND TAKE MY HANDS ASSOCIATION</div>
+                            </div>
+                            <div class="detail-group">
+                                <label>
+                                    <span class="lang-en">Account Number</span>
+                                    <span class="lang-ar">رقم الحساب</span>
+                                </label>
+                                <div class="value">272091</div>
+                            </div>
+                            <div class="detail-group mt-4">
+                                <label><i class="fas fa-money-bill-wave mx-1"></i> IBAN - ILS</label>
+                                <div class="value copy-value">PS38PINV041102720910030038000 <i
+                                        class="far fa-copy cursor-pointer mx-1" title="Copy"></i></div>
+                            </div>
+                            <div class="detail-group">
+                                <label><i class="fas fa-dollar-sign mx-1"></i> IBAN - USD</label>
+                                <div class="value copy-value">PS26PINV041102720910020038001 <i
+                                        class="far fa-copy cursor-pointer mx-1" title="Copy"></i></div>
+                            </div>
+                            <div class="detail-group">
+                                <label><i class="fas fa-coins mx-1"></i> IBAN - JOD</label>
+                                <div class="value copy-value">PS68PINV041102720910010038000 <i
+                                        class="far fa-copy cursor-pointer mx-1" title="Copy"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact section-padding bg-secondary fade-in">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2 class="section-title">
+                        <span class="lang-en">Contact Us</span>
+                        <span class="lang-ar">اتصل بنا</span>
+                    </h2>
+                </div>
+
+                <div class="contact-grid">
+                    <div class="contact-methods">
+                        <div class="contact-item">
+                            <div class="icon-box"><i class="fas fa-location-dot"></i></div>
+                            <div>
+                                <h4>
+                                    <span class="lang-en">Location</span>
+                                    <span class="lang-ar">العنوان</span>
+                                </h4>
+                                <p>
+                                    <span class="lang-en">Bethlehem – Umm Salamuna, Palestine</span>
+                                    <span class="lang-ar">بيت لحم – أم سلمونة</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="icon-box"><i class="fas fa-envelope"></i></div>
+                            <div>
+                                <h4>
+                                    <span class="lang-en">Email</span>
+                                    <span class="lang-ar">البريد الإلكتروني</span>
+                                </h4>
+                                <a href="mailto:takehelpme@gmail.com">takehelpme@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="icon-box"><i class="fas fa-phone"></i></div>
+                            <div>
+                                <h4>
+                                    <span class="lang-en">Phone</span>
+                                    <span class="lang-ar">الهاتف</span>
+                                </h4>
+                                <a href="tel:+970598469497">+970 598 469 497</a>
+                            </div>
+                        </div>
+
+                        <div class="social-links mt-4">
+                            <a href="https://www.facebook.com/profile.php?id=100065710140566" target="_blank"
+                                rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.instagram.com/helpme.association/" target="_blank"
+                                rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="contact-form-wrapper">
+                        <form class="contact-form"
+                            onsubmit="event.preventDefault(); alert(document.documentElement.lang === 'ar' ? 'شكرا لك! سنتواصل معك قريبا.' : 'Thank you for reaching out!');">
+                            <div class="form-group">
+                                <label for="name">
+                                    <span class="lang-en">Full Name</span>
+                                    <span class="lang-ar">الاسم الكامل</span>
+                                </label>
+                                <input type="text" id="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">
+                                    <span class="lang-en">Email</span>
+                                    <span class="lang-ar">البريد الإلكتروني</span>
+                                </label>
+                                <input type="email" id="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">
+                                    <span class="lang-en">Message</span>
+                                    <span class="lang-ar">الرسالة</span>
+                                </label>
+                                <textarea id="message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">
+                                <span class="lang-en">Send Message</span>
+                                <span class="lang-ar">إرسال</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer text-center">
+        <div class="container">
+            <div class="footer-logo mb-4">
+                <span class="logo-ar d-block mb-2">جمعية ساعدني وخذ بيدي الخيرية</span>
+                <span class="logo-en">Help Me and Take My Hand Association</span>
+            </div>
+            <p>&copy; <span id="year"></span> <span class="lang-en">Help Me and Take My Hand Association. All rights
+                    reserved.</span><span class="lang-ar">جمعية ساعدني وخذ بيدي الخيرية. جميع الحقوق محفوظة.</span></p>
+            <a href="#hero" class="back-to-top">
+                <i class="fas fa-chevron-up"></i>
+                <span><span class="lang-en">Back to top</span><span class="lang-ar">العودة للأعلى</span></span>
+            </a>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/script.js"></script>
+</body>
+
+</html>
