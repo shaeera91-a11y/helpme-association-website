@@ -399,6 +399,11 @@
                                 <div class="value copy-value">PS68PINV041102720910010038000 <i
                                         class="far fa-copy cursor-pointer mx-1" title="Copy"></i></div>
                             </div>
+                            <div class="detail-group">
+                                <label><i class="fas fa-euro-sign mx-1"></i> IBAN - EUR</label>
+                                <div class="value copy-value">PS53PINV041102720910020038000 <i
+                                        class="far fa-copy cursor-pointer mx-1" title="Copy"></i></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -460,28 +465,32 @@
                     </div>
 
                     <div class="contact-form-wrapper">
-                        <form class="contact-form"
-                            onsubmit="event.preventDefault(); alert(document.documentElement.lang === 'ar' ? 'شكرا لك! سنتواصل معك قريبا.' : 'Thank you for reaching out!');">
+                        <form class="contact-form" id="contactForm">
+                            <!-- Anti-spam honeypot -->
+                            <input type="text" name="_honey" style="display:none">
+                            <input type="hidden" name="_captcha" value="false">
+                            <input type="hidden" name="_subject" value="رسالة جديدة من موقع جمعية ساعدني وخذ بيدي">
+                            
                             <div class="form-group">
                                 <label for="name">
                                     <span class="lang-en">Full Name</span>
                                     <span class="lang-ar">الاسم الكامل</span>
                                 </label>
-                                <input type="text" id="name" required>
+                                <input type="text" id="name" name="name" required>
                             </div>
                             <div class="form-group">
                                 <label for="email">
                                     <span class="lang-en">Email</span>
                                     <span class="lang-ar">البريد الإلكتروني</span>
                                 </label>
-                                <input type="email" id="email" required>
+                                <input type="email" id="email" name="email" required>
                             </div>
                             <div class="form-group">
                                 <label for="message">
                                     <span class="lang-en">Message</span>
                                     <span class="lang-ar">الرسالة</span>
                                 </label>
-                                <textarea id="message" rows="5" required></textarea>
+                                <textarea id="message" name="message" rows="5" required></textarea>
                             </div>
                             <button type="submit" class="btn btn-primary w-100">
                                 <span class="lang-en">Send Message</span>

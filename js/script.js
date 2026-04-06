@@ -61,10 +61,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Check for saved theme or system preference
     const savedTheme = localStorage.getItem('theme');
     const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
+
     // Default is light mode, but respect user choice if available
     let currentTheme = savedTheme || 'light';
-    
+
     // Apply initial theme
     htmlElement.setAttribute('data-theme', currentTheme);
     updateThemeIcon(currentTheme);
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 5. Fade-in Animation on Scroll
     // ==========================================
     const fadeElements = document.querySelectorAll('.fade-in');
-    
+
     const fadeObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -147,22 +147,22 @@ document.addEventListener('DOMContentLoaded', () => {
     // 7. Copy to Clipboard for IBANs
     // ==========================================
     const copyElements = document.querySelectorAll('.copy-value');
-    
+
     copyElements.forEach(el => {
         const copyBtn = el.querySelector('i.fa-copy');
         if (copyBtn) {
             copyBtn.addEventListener('click', async () => {
                 // Extract text and remove the icon part
                 const textToCopy = el.textContent.trim();
-                
+
                 try {
                     await navigator.clipboard.writeText(textToCopy);
-                    
+
                     // Visual feedback
                     copyBtn.classList.remove('far', 'fa-copy');
                     copyBtn.classList.add('fas', 'fa-check');
                     copyBtn.style.color = '#10B981'; // Green color for success
-                    
+
                     setTimeout(() => {
                         copyBtn.classList.remove('fas', 'fa-check');
                         copyBtn.classList.add('far', 'fa-copy');
@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 8. Language Toggle
     // ==========================================
     const langToggleBtn = document.getElementById('lang-toggle');
-    
+
     // Check for saved language
     const savedLang = localStorage.getItem('language') || 'en';
     htmlElement.setAttribute('lang', savedLang);
@@ -190,7 +190,7 @@ document.addEventListener('DOMContentLoaded', () => {
         langToggleBtn.addEventListener('click', () => {
             const currentLang = htmlElement.getAttribute('lang');
             const newLang = currentLang === 'en' ? 'ar' : 'en';
-            
+
             htmlElement.setAttribute('lang', newLang);
             htmlElement.setAttribute('dir', newLang === 'ar' ? 'rtl' : 'ltr');
             localStorage.setItem('language', newLang);
@@ -203,5 +203,47 @@ document.addEventListener('DOMContentLoaded', () => {
             // When in English, button says 'عربي'. When in Arabic, button says 'English'.
             langToggleBtn.textContent = lang === 'en' ? 'عربي' : 'English';
         }
+    }
+
+    // ==========================================
+    // 9. Contact Form Submission
+    // ==========================================
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerHTML;
+            const lang = document.documentElement.lang;
+
+            // Show loading state
+            submitBtn.innerHTML = lang === 'ar' ? '<i class="fas fa-spinner fa-spin"></i> جاري الإرسال...' : '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            submitBtn.disabled = true;
+
+            const formData = new FormData(this);
+
+            fetch("https://formsubmit.co/ajax/takehelpme@gmail.com", {
+                method: "POST",
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+                .then(response => response.json())
+                .then(data => {
+                    alert(lang === 'ar' ? 'شكرا لك! تم إرسال رسالتك بنجاح وسنتواصل معك قريبا.' : 'Thank you! Your message has been sent successfully.');
+                    this.reset();
+                })
+                .catch(error => {
+                    console.error(error);
+                    alert(lang === 'ar' ? 'عذراً، حدث خطأ أثناء الإرسال. يرجى المحاولة لاحقاً.' : 'Sorry, an error occurred. Please try again later.');
+                })
+                .finally(() => {
+                    // Restore button state
+                    submitBtn.innerHTML = originalBtnText;
+                    submitBtn.disabled = false;
+                });
+        });
     }
 });
