@@ -48,6 +48,7 @@
                 </li>
                 <li><a href="#projects"><span class="lang-en">Projects</span><span class="lang-ar">المشاريع</span></a>
                 </li>
+                <li><a href="news.html"><span class="lang-en">News</span><span class="lang-ar">الأخبار</span></a></li>
                 <li><a href="#impact"><span class="lang-en">Impact</span><span class="lang-ar">الأثر</span></a></li>
                 <li><a href="#contact"><span class="lang-en">Contact</span><span class="lang-ar">اتصل بنا</span></a>
                 </li>
@@ -204,10 +205,11 @@
                 </div>
 
                 <div class="projects-grid">
-                    <div class="project-card">
+                    <button class="project-card project-gallery-trigger" type="button" data-gallery="sensory-room"
+                        aria-haspopup="dialog">
                         <div class="project-img-placeholder">
-                            <img src="images/project-2.jpg" alt="Sensory Room" class="project-img"
-                                onerror="this.style.display='none'">
+                            <img src="images/project-2.jpg" alt=""
+                                class="project-img" loading="lazy">
                             <i class="fas fa-brain"></i>
                         </div>
                         <div class="project-content">
@@ -215,13 +217,17 @@
                                 <span class="lang-en">Sensory Room</span>
                                 <span class="lang-ar">الغرفة الحسية</span>
                             </h3>
+                            <span class="project-gallery-label"><i class="fas fa-images" aria-hidden="true"></i>
+                                <span class="lang-en">View 25 photos</span><span class="lang-ar">شاهد 25 صورة</span>
+                            </span>
                         </div>
-                    </div>
+                    </button>
 
-                    <div class="project-card">
+                    <button class="project-card project-gallery-trigger" type="button" data-gallery="physical-therapy"
+                        aria-haspopup="dialog">
                         <div class="project-img-placeholder">
-                            <img src="images/project-3.jpg" alt="Physical Therapy" class="project-img"
-                                onerror="this.style.display='none'">
+                            <img src="images/project-3.jpg" alt=""
+                                class="project-img" loading="lazy">
                             <i class="fas fa-user-doctor"></i>
                         </div>
                         <div class="project-content">
@@ -229,13 +235,17 @@
                                 <span class="lang-en">Physical Therapy</span>
                                 <span class="lang-ar">العلاج الطبيعي</span>
                             </h3>
+                            <span class="project-gallery-label"><i class="fas fa-images" aria-hidden="true"></i>
+                                <span class="lang-en">View 25 photos</span><span class="lang-ar">شاهد 25 صورة</span>
+                            </span>
                         </div>
-                    </div>
+                    </button>
 
-                    <div class="project-card">
+                    <button class="project-card project-gallery-trigger" type="button" data-gallery="speech-therapy"
+                        aria-haspopup="dialog">
                         <div class="project-img-placeholder">
-                            <img src="images/project-4.jpg" alt="Speech Therapy" class="project-img"
-                                onerror="this.style.display='none'">
+                            <img src="images/project-4.jpg" alt=""
+                                class="project-img" loading="lazy">
                             <i class="fas fa-comments"></i>
                         </div>
                         <div class="project-content">
@@ -243,8 +253,29 @@
                                 <span class="lang-en">Speech Therapy</span>
                                 <span class="lang-ar">العلاج النطقي</span>
                             </h3>
+                            <span class="project-gallery-label"><i class="fas fa-images" aria-hidden="true"></i>
+                                <span class="lang-en">View 25 photos</span><span class="lang-ar">شاهد 25 صورة</span>
+                            </span>
                         </div>
-                    </div>
+                    </button>
+
+                    <button class="project-card project-gallery-trigger" type="button"
+                        data-gallery="educational-rehabilitation" aria-haspopup="dialog">
+                        <div class="project-img-placeholder">
+                            <img src="images/projects/educational-rehabilitation/educational-rehabilitation-07.webp"
+                                alt="" class="project-img" loading="lazy">
+                            <i class="fas fa-shapes"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3>
+                                <span class="lang-en">Educational Rehabilitation</span>
+                                <span class="lang-ar">التأهيل التربوي</span>
+                            </h3>
+                            <span class="project-gallery-label"><i class="fas fa-images" aria-hidden="true"></i>
+                                <span class="lang-en">View 25 photos</span><span class="lang-ar">شاهد 25 صورة</span>
+                            </span>
+                        </div>
+                    </button>
 
                     <div class="project-card">
                         <div class="project-img-placeholder">
@@ -304,6 +335,36 @@
                 </div>
             </div>
         </section>
+
+        <dialog id="project-gallery" class="gallery-dialog" aria-labelledby="gallery-title">
+            <div class="gallery-shell">
+                <header class="gallery-header">
+                    <div>
+                        <p class="gallery-kicker"><span class="lang-en">Project gallery</span><span
+                                class="lang-ar">معرض المشروع</span></p>
+                        <h2 id="gallery-title"></h2>
+                    </div>
+                    <button type="button" class="gallery-close" aria-label="Close gallery">
+                        <i class="fas fa-xmark" aria-hidden="true"></i>
+                    </button>
+                </header>
+
+                <div class="gallery-stage">
+                    <button type="button" class="gallery-nav gallery-prev" aria-label="Previous photo">
+                        <i class="fas fa-chevron-left" aria-hidden="true"></i>
+                    </button>
+                    <figure class="gallery-figure">
+                        <img id="gallery-main-image" src="" alt="">
+                        <figcaption id="gallery-counter" aria-live="polite"></figcaption>
+                    </figure>
+                    <button type="button" class="gallery-nav gallery-next" aria-label="Next photo">
+                        <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                    </button>
+                </div>
+
+                <div id="gallery-thumbnails" class="gallery-thumbnails" role="list"></div>
+            </div>
+        </dialog>
 
         <!-- Impact Section -->
         <section id="impact" class="impact section-padding bg-primary text-white fade-in">
