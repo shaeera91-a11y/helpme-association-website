@@ -1,0 +1,4 @@
+Contact: mailto:helpme.take@saidnihelp.org
+Preferred-Languages: ar, en
+Canonical: https://saidnihelp.org/.well-known/security.txt
+Expires: 2027-08-09T23:59:59Z
