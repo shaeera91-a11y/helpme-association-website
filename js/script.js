@@ -206,7 +206,124 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==========================================
-    // 9. Contact Form Submission
+    // 9. Accessible Project Galleries
+    // ==========================================
+    const galleryDialog = document.getElementById('project-gallery');
+    const galleryMainImage = document.getElementById('gallery-main-image');
+    const galleryTitle = document.getElementById('gallery-title');
+    const galleryCounter = document.getElementById('gallery-counter');
+    const galleryThumbnails = document.getElementById('gallery-thumbnails');
+    const galleryClose = galleryDialog?.querySelector('.gallery-close');
+    const galleryPrevious = galleryDialog?.querySelector('.gallery-prev');
+    const galleryNext = galleryDialog?.querySelector('.gallery-next');
+
+    const galleryProjects = {
+        'sensory-room': { en: 'Sensory Room', ar: 'الغرفة الحسية' },
+        'physical-therapy': { en: 'Physical Therapy', ar: 'العلاج الطبيعي' },
+        'speech-therapy': { en: 'Speech Therapy', ar: 'العلاج النطقي' },
+        'educational-rehabilitation': { en: 'Educational Rehabilitation', ar: 'التأهيل التربوي' }
+    };
+
+    let activeGallery = null;
+    let activeImageIndex = 0;
+
+    function galleryImagePath(slug, index) {
+        return `images/projects/${slug}/${slug}-${String(index + 1).padStart(2, '0')}.webp`;
+    }
+
+    function galleryLanguage() {
+        return htmlElement.getAttribute('lang') === 'ar' ? 'ar' : 'en';
+    }
+
+    function renderGalleryImage(index, moveFocus = false) {
+        if (!activeGallery) return;
+
+        activeImageIndex = (index + 25) % 25;
+        const language = galleryLanguage();
+        const projectName = galleryProjects[activeGallery][language];
+        galleryMainImage.src = galleryImagePath(activeGallery, activeImageIndex);
+        galleryMainImage.alt = language === 'ar'
+            ? `صورة ${activeImageIndex + 1} من مشروع ${projectName}`
+            : `${projectName}, photo ${activeImageIndex + 1}`;
+        galleryTitle.textContent = projectName;
+        galleryCounter.textContent = language === 'ar'
+            ? `${activeImageIndex + 1} من 25`
+            : `${activeImageIndex + 1} of 25`;
+        galleryClose.setAttribute('aria-label', language === 'ar' ? 'إغلاق المعرض' : 'Close gallery');
+        galleryPrevious.setAttribute('aria-label', language === 'ar' ? 'الصورة السابقة' : 'Previous photo');
+        galleryNext.setAttribute('aria-label', language === 'ar' ? 'الصورة التالية' : 'Next photo');
+
+        galleryThumbnails.querySelectorAll('.gallery-thumb').forEach((thumbnail, thumbnailIndex) => {
+            const isActive = thumbnailIndex === activeImageIndex;
+            thumbnail.classList.toggle('is-active', isActive);
+            thumbnail.setAttribute('aria-current', isActive ? 'true' : 'false');
+            if (isActive) thumbnail.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+        });
+
+        if (moveFocus) galleryMainImage.focus?.();
+    }
+
+    function buildGalleryThumbnails(slug) {
+        const language = galleryLanguage();
+        const projectName = galleryProjects[slug][language];
+        const fragment = document.createDocumentFragment();
+        galleryThumbnails.replaceChildren();
+
+        for (let index = 0; index < 25; index += 1) {
+            const button = document.createElement('button');
+            const image = document.createElement('img');
+            button.type = 'button';
+            button.className = 'gallery-thumb';
+            button.setAttribute('role', 'listitem');
+            button.setAttribute('aria-label', language === 'ar' ? `عرض الصورة ${index + 1}` : `View photo ${index + 1}`);
+            image.src = galleryImagePath(slug, index);
+            image.alt = language === 'ar'
+                ? `صورة مصغرة ${index + 1} من ${projectName}`
+                : `${projectName} thumbnail ${index + 1}`;
+            image.loading = 'lazy';
+            image.decoding = 'async';
+            button.append(image);
+            button.addEventListener('click', () => renderGalleryImage(index));
+            fragment.append(button);
+        }
+
+        galleryThumbnails.append(fragment);
+    }
+
+    document.querySelectorAll('.project-gallery-trigger').forEach(trigger => {
+        trigger.addEventListener('click', () => {
+            activeGallery = trigger.dataset.gallery;
+            activeImageIndex = 0;
+            buildGalleryThumbnails(activeGallery);
+            renderGalleryImage(0);
+            galleryDialog.showModal();
+            galleryClose.focus();
+        });
+    });
+
+    galleryClose?.addEventListener('click', () => galleryDialog.close());
+    galleryPrevious?.addEventListener('click', () => renderGalleryImage(activeImageIndex - 1));
+    galleryNext?.addEventListener('click', () => renderGalleryImage(activeImageIndex + 1));
+
+    galleryDialog?.addEventListener('click', event => {
+        if (event.target === galleryDialog) galleryDialog.close();
+    });
+
+    galleryDialog?.addEventListener('keydown', event => {
+        if (event.key === 'ArrowLeft') renderGalleryImage(activeImageIndex - 1);
+        if (event.key === 'ArrowRight') renderGalleryImage(activeImageIndex + 1);
+    });
+
+    // Refresh the open gallery language without closing it.
+    langToggleBtn?.addEventListener('click', () => {
+        if (galleryDialog?.open && activeGallery) {
+            buildGalleryThumbnails(activeGallery);
+            renderGalleryImage(activeImageIndex);
+        }
+    });
+
+    // ==========================================
+    // 10. Contact Form Submission
     // ==========================================
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
