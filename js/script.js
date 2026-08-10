@@ -161,12 +161,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Visual feedback
                     copyBtn.classList.remove('far', 'fa-copy');
                     copyBtn.classList.add('fas', 'fa-check');
-                    copyBtn.style.color = '#10B981'; // Green color for success
+                    copyBtn.classList.add('copy-success');
 
                     setTimeout(() => {
                         copyBtn.classList.remove('fas', 'fa-check');
                         copyBtn.classList.add('far', 'fa-copy');
-                        copyBtn.style.color = '';
+                        copyBtn.classList.remove('copy-success');
                     }, 2000);
                 } catch (err) {
                     console.error('Failed to copy text: ', err);
@@ -327,40 +327,58 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
-        contactForm.addEventListener('submit', function (e) {
+        contactForm.addEventListener('submit', async function (e) {
             e.preventDefault();
 
             const submitBtn = this.querySelector('button[type="submit"]');
-            const originalBtnText = submitBtn.innerHTML;
+            const statusMessage = document.getElementById('form-status');
+            const originalContent = [...submitBtn.childNodes].map(node => node.cloneNode(true));
             const lang = document.documentElement.lang;
 
+            if (!this.checkValidity()) {
+                this.reportValidity();
+                return;
+            }
+
             // Show loading state
-            submitBtn.innerHTML = lang === 'ar' ? '<i class="fas fa-spinner fa-spin"></i> جاري الإرسال...' : '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            const spinner = document.createElement('i');
+            spinner.className = 'fas fa-spinner fa-spin';
+            spinner.setAttribute('aria-hidden', 'true');
+            submitBtn.replaceChildren(spinner, document.createTextNode(lang === 'ar' ? ' جاري الإرسال...' : ' Sending...'));
             submitBtn.disabled = true;
+            submitBtn.setAttribute('aria-busy', 'true');
+            statusMessage.textContent = '';
 
             const formData = new FormData(this);
+            const controller = new AbortController();
+            const requestTimeout = window.setTimeout(() => controller.abort(), 15000);
 
-            fetch("https://formsubmit.co/ajax/takehelpme@gmail.com", {
-                method: "POST",
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            })
-                .then(response => response.json())
-                .then(data => {
-                    alert(lang === 'ar' ? 'شكرا لك! تم إرسال رسالتك بنجاح وسنتواصل معك قريبا.' : 'Thank you! Your message has been sent successfully.');
-                    this.reset();
-                })
-                .catch(error => {
-                    console.error(error);
-                    alert(lang === 'ar' ? 'عذراً، حدث خطأ أثناء الإرسال. يرجى المحاولة لاحقاً.' : 'Sorry, an error occurred. Please try again later.');
-                })
-                .finally(() => {
-                    // Restore button state
-                    submitBtn.innerHTML = originalBtnText;
-                    submitBtn.disabled = false;
+            try {
+                const response = await fetch('/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams(formData).toString(),
+                    signal: controller.signal
                 });
+
+                if (!response.ok) throw new Error('Form submission failed');
+
+                statusMessage.textContent = lang === 'ar'
+                    ? 'شكراً لك! تم إرسال رسالتك بنجاح وسنتواصل معك قريباً.'
+                    : 'Thank you! Your message has been sent successfully.';
+                statusMessage.className = 'form-status is-success';
+                this.reset();
+            } catch {
+                statusMessage.textContent = lang === 'ar'
+                    ? 'عذراً، تعذر إرسال الرسالة. يرجى المحاولة لاحقاً.'
+                    : 'Sorry, the message could not be sent. Please try again later.';
+                statusMessage.className = 'form-status is-error';
+            } finally {
+                window.clearTimeout(requestTimeout);
+                submitBtn.replaceChildren(...originalContent.map(node => node.cloneNode(true)));
+                submitBtn.disabled = false;
+                submitBtn.removeAttribute('aria-busy');
+            }
         });
     }
 });
